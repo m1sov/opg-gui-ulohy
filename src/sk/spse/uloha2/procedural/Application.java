@@ -36,7 +36,7 @@ public class Application extends javafx.application.Application {
 
         Scene scene = new Scene(root);
 
-        stage.setTitle("Procedural Application");
+        stage.setTitle("Procedural Application 2");
         stage.setScene(scene);
         stage.show();
     }

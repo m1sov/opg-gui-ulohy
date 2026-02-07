@@ -1,4 +1,4 @@
-package sk.spse.declarative;
+package sk.spse.uloha1.declarative;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

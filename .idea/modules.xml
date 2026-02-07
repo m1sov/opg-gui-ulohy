@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/opg-gui-examples.iml" filepath="$PROJECT_DIR$/opg-gui-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/opg-gui-ulohy.iml" filepath="$PROJECT_DIR$/opg-gui-ulohy.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package sk.spse.declarative;
+package sk.spse.uloha1.declarative;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +25,7 @@ public class Application extends javafx.application.Application {
 
         Scene scene = new Scene(root);
 
-        stage.setTitle("Declarative Application");
+        stage.setTitle("Declarative Application 1");
         stage.setScene(scene);
         stage.show();
     }
