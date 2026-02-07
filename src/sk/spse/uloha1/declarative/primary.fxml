@@ -21,7 +21,6 @@
     <TextField fx:id="counterField"
                text="0"
                editable="false"
-               padding=""
                style="-fx-padding: 10 20 10 20;" />
 
     <Button text="Plus 1"
