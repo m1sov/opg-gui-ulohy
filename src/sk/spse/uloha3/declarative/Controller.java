@@ -1,55 +1,90 @@
 package sk.spse.uloha3.declarative;
 
-import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
-import javafx.scene.control.Slider;
 import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import java.awt.Desktop;
 import java.net.URI;
 
 public class Controller {
 
-    @FXML
-    private ImageView logoImageView;  // Odkaz na logo ImageView
+    @FXML private ImageView logoImageView;
 
-    @FXML
-    private Slider slider;  // Odkaz na Slider
+    private boolean logoEnlarged = false;
 
-    // Inicializácia metódy
+    private final double NORMAL_SCALE = 1.0;
+    private final double ENLARGED_SCALE = 1.90;
+    private final double NORMAL_ROTATION = 15.0;
+    private final double STRAIGHT_ROTATION = 0.0;
+
     @FXML
     public void initialize() {
-        // Poslucháč na zmenu hodnoty Slidera
-        slider.valueProperty().addListener((observable, oldValue, newValue) -> rotateLogo(newValue.doubleValue()));
+        logoImageView.setRotate(NORMAL_ROTATION);
     }
 
-    // Metóda na otáčanie loga
-    private void rotateLogo(double angle) {
-        // Vytvorenie animácie otáčania
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.1), logoImageView);
-        rotateTransition.setByAngle(angle - logoImageView.getRotate()); // Získame rozdiel od aktuálnej hodnoty
-        rotateTransition.setCycleCount(1);
-        rotateTransition.setAutoReverse(false);
-
-        // Spustenie animácie
-        rotateTransition.play();
+    @FXML
+    public void onLogoEntered(MouseEvent event) {
+        if (!logoEnlarged) {
+            rotateTo(STRAIGHT_ROTATION, 250);
+            scaleTo(1.08, 250);
+        }
     }
 
-    // Metóda pre otvorenie odkazu
+    @FXML
+    public void onLogoExited(MouseEvent event) {
+        if (!logoEnlarged) {
+            rotateTo(NORMAL_ROTATION, 250);
+            scaleTo(NORMAL_SCALE, 250);
+        }
+    }
+
+    @FXML
+    public void onLogoClicked(MouseEvent event) {
+        rotateTo(STRAIGHT_ROTATION, 300);
+        scaleTo(ENLARGED_SCALE, 300);
+        logoEnlarged = true;
+        event.consume();
+    }
+
+    @FXML
+    public void onBackgroundClicked(MouseEvent event) {
+        if (logoEnlarged) {
+            rotateTo(NORMAL_ROTATION, 350);
+            scaleTo(NORMAL_SCALE, 350);
+            logoEnlarged = false;
+        }
+    }
+
+    private void rotateTo(double targetAngle, int duration) {
+        RotateTransition rt = new RotateTransition(Duration.millis(duration), logoImageView);
+        rt.setToAngle(targetAngle);
+        rt.play();
+    }
+
+    private void scaleTo(double targetScale, int duration) {
+        ScaleTransition st = new ScaleTransition(Duration.millis(duration), logoImageView);
+        st.setToX(targetScale);
+        st.setToY(targetScale);
+        st.play();
+    }
+
     @FXML
     public void openLink() {
         try {
-            // Otvorenie odkazu v predvoleného webovom prehliadači
-            URI uri = new URI("https://www.spse-po.sk");
-            Desktop.getDesktop().browse(uri);
+            Desktop.getDesktop().browse(new URI("https://www.spse-po.sk"));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Ďalšia metóda pre akciu "Beriem na vedomie"
     @FXML
-    public void exitApp() {
-        System.exit(0);  // Zatvorenie aplikácie
+    public void handleCloseButtonAction() {
+        System.exit(0);
     }
 }

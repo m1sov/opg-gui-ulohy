@@ -2,54 +2,34 @@ package sk.spse.uloha2.declarative;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.RadioButton;
+
 
 public class Controller {
 
-    @FXML private TextField tfMeno;
-    @FXML private TextField tfEmail;
-
-    @FXML private RadioButton rbMuz;
-    @FXML private RadioButton rbZena;
-
-    private final ToggleGroup pohlavieGroup = new ToggleGroup();
+    @FXML
+    public TextField userNameField;
+    public ToggleGroup pohlavieGroup;
+    public PasswordField hesloField;
 
     @FXML
-    private void initialize() {
-        // ak by sa náhodou načítal iný FXML, nech je chyba hneď jasná
-        if (rbMuz == null || rbZena == null) {
-            throw new IllegalStateException("Chýbajú fx:id rbMuz/rbZena v primary.fxml (kontroluj, že beží správny FXML).");
-        }
-
-        rbMuz.setToggleGroup(pohlavieGroup);
-        rbZena.setToggleGroup(pohlavieGroup);
-
-        rbMuz.setSelected(true);
-    }
-
-    @FXML
-    private void onClose() {
-        Platform.exit();
-    }
-
-    @FXML
-    private void onRegister() {
-        String meno = tfMeno.getText().trim();
-        String email = tfEmail.getText().trim();
-
-        String pohlavie = "";
-        if (pohlavieGroup.getSelectedToggle() != null) {
-            pohlavie = ((RadioButton) pohlavieGroup.getSelectedToggle()).getText();
-        }
-
+    private void registruj() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Uloha 14.2 – Registrácia");
-        alert.setHeaderText("Zadané údaje");
-        alert.setContentText(
-                "Meno: " + meno + "\n" +
-                        "Heslo: " + email + "\n" +
-                        "Pohlavie: " + pohlavie
-        );
+        alert.setTitle("Registrácia užívateľa");
+        alert.setHeaderText("Registrácia prebehla úspešne");
+        String pohlavie = ((RadioButton)pohlavieGroup.getSelectedToggle()).getText();
+        String message = String.format("Užívateľ %s (%s) s heslom %s bol pridaný do systému",
+                userNameField.getText(), pohlavie, hesloField.getText());
+        alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void zatvor() {
+        Platform.exit();
     }
 }

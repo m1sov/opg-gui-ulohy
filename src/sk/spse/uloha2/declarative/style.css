@@ -1,0 +1,30 @@
+.root {
+    -fx-font-family: "Serif";
+}
+
+.label {
+    -fx-text-fill: green;
+    -fx-font-family: "Serif";
+}
+
+.text-field {
+    -fx-border-color: green;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+}
+
+.password-field {
+    -fx-border-color: red;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+}
+
+.radio-button {
+    -fx-text-fill: blue;
+}
+
+.button {
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-background-color: brown;
+}

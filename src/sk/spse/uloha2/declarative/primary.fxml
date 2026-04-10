@@ -1,45 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane hgap="12" prefHeight="172.0" prefWidth="312.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.spse.uloha2.declarative.Controller">
-
+<VBox alignment="TOP_CENTER" prefHeight="190.0" prefWidth="350.0" spacing="15" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.spse.uloha2.declarative.Controller">
     <padding>
-        <Insets bottom="12" left="12" right="12" top="12" />
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-
-    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="26.0" prefWidth="116.0" text="Užívateľské meno:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <TextField fx:id="tfMeno" prefHeight="26.0" prefWidth="155.0" promptText="zadaj meno" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
-
-    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="27.0" prefWidth="64.0" text="Heslo:" textAlignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <PasswordField fx:id="tfEmail" prefHeight="26.0" prefWidth="123.0" promptText="zadaj heslo" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
-
-    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="33.0" prefWidth="59.0" text="Pohlavie:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <HBox spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <RadioButton fx:id="rbMuz" prefHeight="33.0" prefWidth="55.0" text="Muž" />
-        <RadioButton fx:id="rbZena" prefHeight="31.0" prefWidth="60.0" text="Žena" />
-    </HBox>
-
-    <HBox spacing="12" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-
-    <Label text="" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-   <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
-      <children>
-           <Button onAction="#onRegister" text="Registrovať" />
-           <Button alignment="BOTTOM_RIGHT" onAction="#onClose" text="Zavrieť" textAlignment="CENTER" />
-      </children>
-   </HBox>
-   <columnConstraints>
-      <ColumnConstraints halignment="RIGHT" maxWidth="149.59999237060546" minWidth="82.6" prefWidth="130.59999237060546" />
-      <ColumnConstraints maxWidth="193.19999999999996" minWidth="126.20000762939449" prefWidth="145.2000076293945" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-</GridPane>
+    <children>
+        <!-- Užívateľské meno -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefWidth="155" style="-fx-text-fill: green; -fx-font-family: Serif;" text="Užívateľské meno:" />
+                <TextField fx:id="userNameField" prefHeight="25.0" prefWidth="175.0" promptText="zadaj meno" style="-fx-border-color: green;                                   -fx-font-family: Serif;                                   -fx-background-radius: 7;                                   -fx-border-radius: 7;" />
+            </children>
+        </HBox>
+        <!-- Heslo -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefWidth="155" style="-fx-text-fill: green; -fx-font-family: Serif;" text="Heslo:" />
+                <PasswordField fx:id="hesloField" prefHeight="25.0" prefWidth="175.0" promptText="zadaj heslo" style="-fx-border-color: red;                                       -fx-font-family: Serif;                                       -fx-background-radius: 7;                                       -fx-border-radius: 7;" />
+            </children>
+        </HBox>
+        <!-- Pohlavie -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefWidth="155" style="-fx-text-fill: green; -fx-font-family: Serif;" text="Pohlavie:" />
+                <RadioButton fx:id="muzRadio" selected="true" style="-fx-text-fill: blue; -fx-font-family: Serif;" text="Muž">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="pohlavieGroup" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="zenaRadio" style="-fx-text-fill: blue; -fx-font-family: Serif;" text="Žena" toggleGroup="$pohlavieGroup" />
+            </children>
+        </HBox>
+        <Separator prefWidth="370">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="-20.0" right="-20.0" />
+            </VBox.margin></Separator>
+        <!-- Tlačidlá -->
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <children>
+                <Button onAction="#registruj" prefWidth="120" style="-fx-text-fill: brown;                                -fx-font-family: Serif;                                -fx-background-radius: 7;                                -fx-border-radius: 7;" text="Registrovať" />
+                <Button onAction="#zatvor" prefWidth="90" style="-fx-text-fill: brown;                                -fx-font-family: Serif;                                -fx-background-radius: 7;                                -fx-border-radius: 7;" text="Zavrieť" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
