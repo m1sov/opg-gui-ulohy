@@ -1,0 +1,29 @@
+.root {
+    -fx-background-image: url("calculator.jpeg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-padding: 20;
+}
+
+.label {
+    -fx-text-fill: #930b1e;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-opacity: 0.8;
+    -fx-font-size: 20px;
+    -fx-background-color: white;
+    -fx-border-color: #930b1e;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-text-fill: #930b1e;
+    -fx-font-weight: bold;
+}
+
+.text-field:focused {
+    -fx-border-color: #ff4d6d;
+    -fx-background-color: #fff0f3;
+}

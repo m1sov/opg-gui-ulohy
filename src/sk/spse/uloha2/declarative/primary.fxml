@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx/21"
-          xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="sk.spse.uloha2.declarative.Controller"
-          hgap="12" vgap="10">
+<GridPane hgap="12" prefHeight="172.0" prefWidth="312.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.spse.uloha2.declarative.Controller">
 
     <padding>
-        <Insets top="12" right="12" bottom="12" left="12"/>
+        <Insets bottom="12" left="12" right="12" top="12" />
     </padding>
 
-    <Label text="Meno:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <TextField fx:id="tfMeno" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="26.0" prefWidth="116.0" text="Užívateľské meno:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="tfMeno" prefHeight="26.0" prefWidth="155.0" promptText="zadaj meno" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
 
-    <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <TextField fx:id="tfEmail" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="27.0" prefWidth="64.0" text="Heslo:" textAlignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <PasswordField fx:id="tfEmail" prefHeight="26.0" prefWidth="123.0" promptText="zadaj heslo" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
 
-    <Label text="Pohlavie:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-    <HBox spacing="12" GridPane.rowIndex="2" GridPane.columnIndex="1">
-        <RadioButton fx:id="rbMuz" text="Muž" />
-        <RadioButton fx:id="rbZena" text="Žena" />
-        <RadioButton fx:id="rbIne" text="Iné" />
+    <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="33.0" prefWidth="59.0" text="Pohlavie:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <HBox spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <RadioButton fx:id="rbMuz" prefHeight="33.0" prefWidth="55.0" text="Muž" />
+        <RadioButton fx:id="rbZena" prefHeight="31.0" prefWidth="60.0" text="Žena" />
     </HBox>
 
-    <HBox spacing="12" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
-        <Button text="Registrovať" onAction="#onRegister"/>
-        <Button text="Zavrieť" onAction="#onClose"/>
-    </HBox>
+    <HBox spacing="12" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
 
-    <Label text="" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+    <Label text="" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+   <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+      <children>
+           <Button onAction="#onRegister" text="Registrovať" />
+           <Button alignment="BOTTOM_RIGHT" onAction="#onClose" text="Zavrieť" textAlignment="CENTER" />
+      </children>
+   </HBox>
+   <columnConstraints>
+      <ColumnConstraints halignment="RIGHT" maxWidth="149.59999237060546" minWidth="82.6" prefWidth="130.59999237060546" />
+      <ColumnConstraints maxWidth="193.19999999999996" minWidth="126.20000762939449" prefWidth="145.2000076293945" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

@@ -11,20 +11,18 @@ public class Controller {
 
     @FXML private RadioButton rbMuz;
     @FXML private RadioButton rbZena;
-    @FXML private RadioButton rbIne;
 
     private final ToggleGroup pohlavieGroup = new ToggleGroup();
 
     @FXML
     private void initialize() {
         // ak by sa náhodou načítal iný FXML, nech je chyba hneď jasná
-        if (rbMuz == null || rbZena == null || rbIne == null) {
-            throw new IllegalStateException("Chýbajú fx:id rbMuz/rbZena/rbIne v primary.fxml (kontroluj, že beží správny FXML).");
+        if (rbMuz == null || rbZena == null) {
+            throw new IllegalStateException("Chýbajú fx:id rbMuz/rbZena v primary.fxml (kontroluj, že beží správny FXML).");
         }
 
         rbMuz.setToggleGroup(pohlavieGroup);
         rbZena.setToggleGroup(pohlavieGroup);
-        rbIne.setToggleGroup(pohlavieGroup);
 
         rbMuz.setSelected(true);
     }
@@ -49,7 +47,7 @@ public class Controller {
         alert.setHeaderText("Zadané údaje");
         alert.setContentText(
                 "Meno: " + meno + "\n" +
-                        "Email: " + email + "\n" +
+                        "Heslo: " + email + "\n" +
                         "Pohlavie: " + pohlavie
         );
         alert.showAndWait();
