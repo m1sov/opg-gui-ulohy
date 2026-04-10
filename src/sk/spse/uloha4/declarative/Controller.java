@@ -9,12 +9,10 @@ import java.util.Random;
 
 public class Controller {
 
-
     @FXML private VBox vbox1;
     @FXML private VBox vbox2;
     @FXML private VBox vbox3;
     @FXML private VBox vbox4;
-
 
     @FXML private ImageView imageView1;
     @FXML private ImageView imageView2;
@@ -23,45 +21,33 @@ public class Controller {
 
     private final Random random = new Random();
 
-    private String getRandomColor() {
-        int r = random.nextInt(256);
-        int g = random.nextInt(256);
-        int b = random.nextInt(256);
-        return String.format("rgb(%d,%d,%d)", r, g, b);
-    }
-
-
     @FXML
     private void randomize() {
-        randomizeItem(vbox1, imageView1);
-        randomizeItem(vbox2, imageView2);
-        randomizeItem(vbox3, imageView3);
-        randomizeItem(vbox4, imageView4);
-    }
+        vbox1.setStyle("-fx-background-color: " + getRandomColor());
+        vbox2.setStyle("-fx-background-color: " + getRandomColor());
+        vbox3.setStyle("-fx-background-color: " + getRandomColor());
+        vbox4.setStyle("-fx-background-color: " + getRandomColor());
 
-
-    private void randomizeItem(VBox vbox, ImageView imageView) {
-
-
-        vbox.setStyle("-fx-background-color: " + getRandomColor());
-
-
-        double scale = 0.5 + random.nextDouble();
-        double scale2 = 0.5 + random.nextDouble();
-        imageView.setScaleX(scale);
-        imageView.setScaleY(scale2);
-
-
-        double opacity = 0.3 + (random.nextDouble() * 0.7);
-        imageView.setOpacity(opacity);
-
-
-        double rotation = random.nextInt(361);
-        imageView.setRotate(rotation);
+        randomizeImage(imageView1);
+        randomizeImage(imageView2);
+        randomizeImage(imageView3);
+        randomizeImage(imageView4);
     }
 
     @FXML
-    private void close() {
+    private void closeApp() {
         Platform.exit();
+    }
+
+    private void randomizeImage(ImageView iv) {
+        iv.setFitWidth(50 + random.nextInt(151));
+        iv.setOpacity(0.2 + random.nextDouble() * 0.8);
+        iv.setRotate(-180 + random.nextInt(361));
+    }
+
+    private String getRandomColor() {
+        return "rgb(" + random.nextInt(256) + "," +
+                random.nextInt(256) + "," +
+                random.nextInt(256) + ")";
     }
 }

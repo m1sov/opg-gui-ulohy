@@ -1,77 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.spse.uloha4.declarative.Controller" prefWidth="800" prefHeight="450">
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.spse.uloha4.declarative.Controller">
+
+    <center>
+        <TilePane prefColumns="4">
+
+            <VBox fx:id="vbox1" alignment="CENTER" prefHeight="250" prefWidth="200" style="-fx-background-color: blue;">
+                <ImageView fx:id="imageView1" fitWidth="120" preserveRatio="true">
+                    <image><Image url="@soup2.png" /></image>
+                </ImageView>
+            </VBox>
+
+            <VBox fx:id="vbox2" alignment="CENTER" prefHeight="250" prefWidth="200" style="-fx-background-color: yellow;">
+                <ImageView fx:id="imageView2" fitWidth="120" preserveRatio="true">
+                    <image><Image url="@soup2.png" /></image>
+                </ImageView>
+            </VBox>
+
+            <VBox fx:id="vbox3" alignment="CENTER" prefHeight="250" prefWidth="200" style="-fx-background-color: green;">
+                <ImageView fx:id="imageView3" fitWidth="120" preserveRatio="true">
+                    <image><Image url="@soup2.png" /></image>
+                </ImageView>
+            </VBox>
+
+            <VBox fx:id="vbox4" alignment="CENTER" prefHeight="250" prefWidth="200" style="-fx-background-color: red;">
+                <ImageView fx:id="imageView4" fitWidth="120" preserveRatio="true">
+                    <image><Image url="@soup2.png" /></image>
+                </ImageView>
+            </VBox>
+
+        </TilePane>
+    </center>
+
     <bottom>
-        <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER" style="-fx-background-color: #D3D3D3; -fx-padding: 15px;">
-            <children>
-                <VBox alignment="CENTER_LEFT" spacing="5.0">
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="&quot;In the future, everyone will be world-famous for 15 minutes&quot;" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="- Andy Warhol" />
-                    </children>
-                </VBox>
-                <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="10.0">
-                    <children>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#randomize" text="Randomize" />
-                        <Button mnemonicParsing="false" onAction="#close" text="Close" />
-                    </children>
-                </HBox>
-            </children>
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets topRightBottomLeft="10" />
+            </padding>
+            <VBox prefHeight="35.0" prefWidth="334.0">
+                <children>
+
+                    <Label text="&quot;In the future, everyone will be world-famous for 15 minutes&quot;" />
+                    <Label text="- Andy Warhol" />
+                </children>
+            </VBox>
+            <Label prefHeight="18.0" prefWidth="261.0" HBox.hgrow="ALWAYS" />
+
+            <Button onAction="#randomize" text="Randomize" />
+
+            <Button onAction="#closeApp" text="Close" />
         </HBox>
     </bottom>
 
-    <center>
-        <TilePane alignment="CENTER" prefColumns="4" prefRows="1" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS" hgap="0" vgap="0">
-            <children>
-                <VBox fx:id="vbox1" alignment="CENTER" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #f88fb5;">
-                    <children>
-                        <ImageView fx:id="imageView1" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@soup2.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </VBox>
-
-                <VBox fx:id="vbox2" alignment="CENTER" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #9ecbf3;">
-                    <children>
-                        <ImageView fx:id="imageView2" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@soup2.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </VBox>
-
-                <VBox fx:id="vbox3" alignment="CENTER" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #c0e859;">
-                    <children>
-                        <ImageView fx:id="imageView3" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@soup2.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </VBox>
-
-                <VBox fx:id="vbox4" alignment="CENTER" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #f5bb6c;">
-                    <children>
-                        <ImageView fx:id="imageView4" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@soup2.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </VBox>
-            </children>
-        </TilePane>
-    </center>
 </BorderPane>
